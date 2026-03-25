@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Upload Thesis</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-circle">OL</div>
+        <div class="brand-text">
+          <div class="brand-title">OLLC</div>
+          <div class="brand-sub">EDU REPO</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item" href="dashboard.html">Dashboard</a>
+        <a class="nav-item" href="research-papers.html">Research Papers</a>
+        <a class="nav-item" href="theses&dissertations.html">Theses & Dissertations</a>
+        <a class="nav-item" href="faculty.html">Faculty Publications</a>
+        <a class="nav-item" href="save.html">Saved</a>
+        <a class="nav-item active" href="#">Upload</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="logout">Log Out</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="top-actions" aria-hidden="false">
+          <div class="icon-bell" title="Notifications">B</div>
+          <div class="icon-profile" title="Profile">P</div>
+        </div>
+      </div>
+
+      <section class="upload-area">
+        <div class="upload-card">
+          <h2>Upload New Thesis</h2>
+          <div id="uploadStatus" class="status-message"></div>
+
+          <form id="uploadForm">
+            <label class="field-label">Project Title</label>
+            <input class="field-input" type="text" name="title" placeholder="e.g. Optimizing neural networks..." required>
+
+            <div style="display:flex;gap:8px;">
+              <div style="flex:1">
+                <label class="field-label">Year</label>
+                <input class="field-input" type="text" name="year" placeholder="2024">
+              </div>
+              <div style="flex:2">
+                <label class="field-label">Author(s)</label>
+                <input class="field-input" type="text" name="authors" placeholder="Sarah Jenkins, David Lo">
+              </div>
+            </div>
+
+            <label class="field-label">Abstract / Description</label>
+            <textarea class="field-input" name="abstract" rows="6" placeholder="Paste the abstract here..."></textarea>
+
+            <div class="ai-assist">AI Assistant — Try the AI helper to get a summary or keywords.</div>
+
+            <label class="field-label">Upload PDF</label>
+            <input class="field-input" type="file" name="pdfFile" accept="application/pdf">
+
+            <label class="field-label">Upload Image Snippet</label>
+            <input class="field-input" type="file" name="imageFile" accept="image/*">
+
+            <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:12px;">
+              <button id="cancelBtn" type="button" class="btn-light">Cancel</button>
+              <button id="publishBtn" type="submit" class="discover-btn">Publish Project</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    
+    (function(){
+      const form = document.getElementById('uploadForm');
+      const status = document.getElementById('uploadStatus');
+      const cancel = document.getElementById('cancelBtn');
+
+      function showStatus(msg, type){
+        if(!status) return;
+        status.textContent = msg;
+        status.classList.remove('status-success','status-error');
+        status.classList.add(type==='success' ? 'status-success' : 'status-error');
+        clearTimeout(window._uploadStatusTimeout);
+        window._uploadStatusTimeout = setTimeout(()=>{ status.textContent=''; status.classList.remove('status-success','status-error'); }, 3000);
+      }
+
+      cancel.addEventListener('click', function(){ window.location.href='dashboard.html'; });
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const data = new FormData(form);
+        const project = { title: data.get('title')||'Untitled', year: data.get('year'), authors: data.get('authors'), abstract: data.get('abstract'), date: new Date().toISOString() };
+        try{
+          const key = 'ollc_uploaded_projects_v1';
+          const list = JSON.parse(localStorage.getItem(key)||'[]');
+          list.unshift(project);
+          localStorage.setItem(key, JSON.stringify(list));
+          showStatus('Project published successfully.', 'success');
+          setTimeout(()=> window.location.href='dashboard.html', 800);
+        }catch(err){
+          showStatus('Failed to save project.', 'error');
+        }
+
+      });
+
+    })();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Research Papers</title>
+	<link rel="stylesheet" href="CSS/styles.css">
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+	<aside class="sidebar">
+		<div class="brand">
+			<div class="logo-circle">OL</div>
+			<div class="brand-text">
+				<div class="brand-title">OLLC</div>
+				<div class="brand-sub">EDU REPO</div>
+			</div>
+		</div>
+
+		<nav class="nav">
+			<a class="nav-item" href="dashboard.html">Dashboard</a>
+			<a class="nav-item active" href="#">Research Papers</a>
+			<a class="nav-item" href="theses&dissertations.html">Theses & Dissertations</a>
+			<a class="nav-item" href="faculty.html">Faculty Publications</a>
+			<a class="nav-item" href="save.html">Saved</a>
+			<a class="nav-item" href="upload.html">Upload</a>
+		</nav>
+
+		<div class="sidebar-footer">
+			<a href="login.html" class="logout">Log Out</a>
+		</div>
+	</aside>
+
+	<main class="main">
+		<div class="topbar">
+			<input class="search top-search" type="text" placeholder="Search for Papers, Authors or Topics...">
+			<div class="top-actions" aria-hidden="false">
+				<div class="icon-bell" title="Notifications">B</div>
+				<div class="icon-profile" title="Profile">P</div>
+			</div>
+		</div>
+
+		<section class="paper-view">
+			<div class="paper-left">
+				<div class="paper-card">
+					<div class="paper-thumb">PDF</div>
+					<div class="paper-content">
+						<h2 class="paper-title">Generative Adversarial Networks for Climate Modeling</h2>
+						<div class="paper-meta">October 1, 2020 • John Doe</div>
+						<p class="paper-abstract">This thesis explores the application of GANs to predict micro-climate changes in urban environments with high precision. The model demonstrates improved locality-sensitive predictions compared to baseline methods.</p>
+						<div class="paper-actions">
+							<a class="card-cta" href="#">Download PDF</a>
+							<button class="save-btn" type="button">Save</button>
+						</div>
+					</div>
+					<div class="paper-authors">
+						<div class="authors-title">Authors</div>
+						<div class="author">David Io</div>
+						<div class="author">Sarah Jenkins</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="paper-right">
+				<h3>More Papers</h3>
+				<div class="card-grid recent">
+					<div class="card-item" data-id="paper-gan">
+						<div class="card-title">Generative Adversarial Networks</div>
+						<div class="card-meta">John Doe • 2020</div>
+					</div>
+					<div class="card-item" data-id="paper-rl">
+						<div class="card-title">Reinforcement Learning in Swarm Robotics</div>
+						<div class="card-meta">Jane Smith • 2022</div>
+					</div>
+					<div class="card-item" data-id="paper-edgeai">
+						<div class="card-title">Edge AI for Environmental Sensing</div>
+						<div class="card-meta">Alan Turing • 2021</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</div>
+
+</body>
+</html>

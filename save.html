@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Saved</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo-circle">OL</div>
+      <div class="brand-text">
+        <div class="brand-title">OLLC</div>
+        <div class="brand-sub">EDU REPO</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-item" href="dashboard.html">Dashboard</a>
+      <a class="nav-item" href="research-papers.html">Research Papers</a>
+      <a class="nav-item" href="theses&dissertations.html">Theses & Dissertations</a>
+      <a class="nav-item" href="faculty.html">Faculty Publications</a>
+      <a class="nav-item active" href="#">Saved</a>
+      <a class="nav-item" href="upload.html">Upload</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="login.html" class="logout">Log Out</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <input class="search top-search" type="text" placeholder="Search for Papers, Authors or Topics...">
+      <div class="top-actions" aria-hidden="false">
+        <div class="icon-bell" title="Notifications">B</div>
+        <div class="icon-profile" title="Profile">P</div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h3>Saved</h3>
+        <p>Items you've saved to your library.</p>
+      </div>
+    </section>
+
+    <h3>Your Library</h3>
+    <div id="savedList" class="card-grid recent">
+      <!-- Saved items will render here via script.js -->
+    </div>
+  </main>
+
+</div>
+
+<script src="JS/script.js"></script>
+</body>
+</html>
